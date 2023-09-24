@@ -1,17 +1,7 @@
 <?php
 $dicc_ventas = importar_dades0('sales_2008_2011.csv');
- /*
-$contador = 0;
-foreach($dicc_ventas as $clave => $valor){
-    if($contador < 5){
-        for($i=0;$i<3;$i++){
-            foreach($dicc_ventas2=$valor[$i]  as $clave2 => $valor2){
-                echo "Producto:$clave Clave:$clave2, valor: $valor2";
-            } 
-        } 
-    }
-}*/
 
+/* Esta función dado un fichero csv devuelve un diccionarioo */
 function importar_dades0($fitxer){
     $file = fopen($fitxer, 'r');
     $row0 = fgetcsv($file);
@@ -27,6 +17,7 @@ function importar_dades0($fitxer){
      return $diccionario;
 }
 
+/* Esta función devuelve una lista con todos los productos que ha comprado un cliente */
 function compra_clients($dicc,$cliente){
     $lista= array();
     foreach($dicc as $clave => $valor){
@@ -40,6 +31,7 @@ function compra_clients($dicc,$cliente){
     return $lista;
 }
 
+/* Esta función guuarda los datos recibidos por un fichero csv en un fichero json */
 function guardar_dades($fitxer){
     $file = fopen($fitxer, 'r');
     $row1 = fgetcsv($file);
@@ -63,7 +55,7 @@ function guardar_dades($fitxer){
     
 } 
 
-
+/* Esta función añade una nueva compra al diccionario de compras */
 function afegeix_commpra($productx,$countryx,$datex,$quantityx,$amountx,$cardx,$Cust_IDx,$dicc){
     $d =array(
         'country' => $countryx,
@@ -77,7 +69,7 @@ function afegeix_commpra($productx,$countryx,$datex,$quantityx,$amountx,$cardx,$
     $dicc[$productx][]  = $d;  
 }
 
-
+/* Esta función borra del diccionario la copmpra recibida si existe en éste */
 function borrar_compra($productx,$countryx,$datex,$quantityx,$amountx,$cardx,$Cust_IDx,$dicc){
     if(array_key_exists($productx,$dicc)){
         $lista = $dicc[$productx];
@@ -90,6 +82,7 @@ function borrar_compra($productx,$countryx,$datex,$quantityx,$amountx,$cardx,$Cu
     }
 } 
 
+/* Esta función dado un fichero json devuelve un diccionario con los datos que contiene */
 function importar_dades($fitxer){
     $f = file_get_contents($fitxer);
     $datos = json_decode($f,true);
@@ -107,7 +100,8 @@ function importar_dades($fitxer){
             $coont++;
         }
         $d[$datos[$i]['product']][]= $d2; 
-    } 
+    }
+    return $d;
 } 
 
 
