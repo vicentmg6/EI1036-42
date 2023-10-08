@@ -7,11 +7,11 @@
 			<a href="?action=form_register">Registro</a>
 		</li>
 		<li>
-			<a href="?action=list">Listar</a>
+			<a href="?action=lgpd">LGPD</a>
 		</li>
 
 		<li>
-			<a href="?action=modify">Modificar</a>
+			<a href="?action=galeria">Galería</a>
 		</li>
 		<li>
 			<a href="?action=qui_som">Quiénes Somos</a>

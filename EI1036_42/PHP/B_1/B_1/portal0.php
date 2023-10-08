@@ -26,6 +26,12 @@
         case "qui_som":
             $central = "/partials/qui_som.php";
             break;
+        case "lgpd":
+            $central = "/partials/lgpd.php";
+            break;
+        case "galeria":
+            $central = "/partials/galeria.php";
+            break;
         default:
             $central = "/partials/error.php";
     }

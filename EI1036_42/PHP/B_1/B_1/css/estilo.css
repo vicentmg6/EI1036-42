@@ -75,7 +75,7 @@ table { background-color:#E8E8E8;
 th { background-color: #E8E8E8;
     border: none; }
 td, th { border: 1px solid;padding:1px; border: none;}
-td { border-bottom:1px dotted #E8E8E8; border: none;width: auto;}
+td { border-bottom:1px dotted #E8E8E8; border: none; text-align: justify;}
 
 
 #registro a:hover {
@@ -125,4 +125,21 @@ section#blog {
     color: white;
 }
 header>img{width:15%}
-img{max-width: 50%;}
+
+
+.galeria{
+    display: flex;
+    flex-wrap: wrap;
+} 
+.imagen{
+    flex-basis: calc(33.33% - 10px);
+    margin: 5px;
+} 
+.imagen img{
+    width: 300px;
+    height: 200px;
+} 
+
+.cuerpojust{
+    text-align: justify;
+} 
