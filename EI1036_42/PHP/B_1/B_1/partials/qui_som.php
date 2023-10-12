@@ -15,6 +15,7 @@
                 <iframe src="https://maps.app.goo.gl/b4VN5HmaazfsjmFDA" width="400" height="420"></iframe>
             </td>
             <td>
+                <br></br>
             Somos un centro educativo comprometido con la excelencia académica y el desarrollo integral de nuestros estudiantes. Nuestra misión es proporcionar una educación de calidad que inspire el aprendizaje, fomente la creatividad y prepare a nuestros alumnos para enfrentar los desafíos del futuro. <br><br>
 
             En el corazón de nuestra institución se encuentra un equipo de profesionales apasionados y dedicados que se esfuerzan por cultivar un ambiente de aprendizaje enriquecedor. Nuestra visión es ser líderes en la formación de ciudadanos responsables, críticos y comprometidos con la sociedad. <br><br>

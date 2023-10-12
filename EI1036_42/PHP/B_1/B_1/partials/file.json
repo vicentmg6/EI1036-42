@@ -1,0 +1,18 @@
+{
+    "EI1040": [
+        {
+            "descripcion": "asd",
+            "numeromax": "6",
+            "numerovac": "3",
+            "precio": "7"
+        }
+    ],
+    "EI1042": [
+        {
+            "descripcion": "asddwsagdshg",
+            "numeromax": "9",
+            "numerovac": "3",
+            "precio": "7"
+        }
+    ]
+}
