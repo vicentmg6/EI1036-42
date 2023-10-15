@@ -1,3 +1,16 @@
+/**
+ * * Descripción: Fichero HTML/PHP donde se muestra la galería de imágenes.
+ * *
+ * * Descripción extensa: Mediante las cajas flexibles y columnas se muestra una galería de imágenes del centro educativo.
+ * *
+ * * @author  Javier <al404921@uji.es>  Vicent <al405660@uji.es>
+ * * @copyright 2023 Javier y Vicent
+ * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
+ * * @version 2
+ * *
+ **/
+
+
 <!DOCTYPE html>
 <html lang="es">
 
