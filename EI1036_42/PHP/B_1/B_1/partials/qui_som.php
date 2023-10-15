@@ -1,3 +1,16 @@
+/**
+ * * Descripción: Fichero HTML/PHP que explica qué es la empresa.
+ * *
+ * * Descripción extensa: En este fichero se explica todo sobre la empresa, y además se añade
+ * * un iframe con la localización en el Google Maps del centro.
+ * *
+ * * @author  Javier <al404921@uji.es>  Vicent <al405660@uji.es>
+ * * @copyright 2023 Javier y Vicent
+ * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
+ * * @version 2
+ * *
+ **/
+     
 <!DOCTYPE html>
 <html lang="es">
 
