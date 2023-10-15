@@ -1,4 +1,4 @@
-/**
+<!--
  * * Descripción: Fichero HTML/PHP que representa las diferentes opciones que el usuario puede realizar en la página.
  * *
  * * Descripción extensa: En este fichero se encuentran todas las opciones de la página y como funciona la
@@ -9,7 +9,7 @@
  * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
  * * @version 2
  * *
- **/
+-->
 
 <nav>
 	<ul>

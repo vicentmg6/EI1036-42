@@ -1,4 +1,4 @@
-/**
+<!--
  * * Descripción: Fichero HTML/PHP que explica qué es la empresa.
  * *
  * * Descripción extensa: En este fichero se explica todo sobre la empresa, y además se añade
@@ -9,7 +9,7 @@
  * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
  * * @version 2
  * *
- **/
+-->
      
 <!DOCTYPE html>
 <html lang="es">

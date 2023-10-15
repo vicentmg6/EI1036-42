@@ -1,4 +1,4 @@
-/**
+<!--
  * * Descripción: Fichero HTML/PHP para añadir un curso.
  * *
  * * Descripción extensa: Se crea el formulario con los campos necesarios y sus requisitos para añadir un curso.
@@ -8,7 +8,7 @@
  * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
  * * @version 2
  * *
- **/
+-->
 
 
 <!DOCTYPE html>
@@ -26,18 +26,18 @@
     <legend>Datos del curso</legend>
     <label for="codigo">Código</label>
     <br/>
-    <input type="text" name="codigo" required class="item_requerid" size="20" maxlength="25" placeholder="Código"
+    <input type="text" id="codigo" name="codigo" required class="item_requerid" size="20" maxlength="25" placeholder="Código"
 		 placeholder="Actividad1" />
     <br/>
     <label for="descripcion">Descripción</label>
     <br/>
     <textarea id="descripcion" name="descripcion" rows=4 cols=50 maxlength="300" placeholder="Breve descripción"></textarea>
     <br/>
-    <label for="alumnosmax">Número Alumnos Máximo</label>
+    <label for="numeromax">Número Alumnos Máximo</label>
     <br/>
     <input type="number" id="numeromax" name="numeromax" min="1">
     <br/>
-    <label for="vacantes">Número Plazas Vacantes</label>
+    <label for="numerovac">Número Plazas Vacantes</label>
     <br/>
     <input type="number" id="numerovac" name="numerovac" min="0">
     <br/>

@@ -1,4 +1,4 @@
-/**
+<!--
  * * Descripción: Fichero PHP que gestiona la entrada de los datos del formulario
  * *
  * * Descripción extensa: Se comprueba que los datos sean correctos, o no estén repetidos y se añaden al fichero JSON
@@ -8,7 +8,7 @@
  * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
  * * @version 2
  * *
- **/
+-->
 
 
 <!DOCTYPE html>

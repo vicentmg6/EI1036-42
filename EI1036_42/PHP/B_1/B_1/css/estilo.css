@@ -156,3 +156,7 @@ header>img{width:15%}
     border-collapse: separate;
     border-spacing: 20px;
 } 
+
+time {
+    color: white;
+}

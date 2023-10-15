@@ -1,4 +1,4 @@
-/**
+<!--
  * * Descripción: Fichero HTML/PHP que representa la página de LGPD
  * *
  * * Descripción extensa: Es la página donde se muestra la Ley General de Protección de Datos donde la empresa se compromete
@@ -9,7 +9,7 @@
  * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
  * * @version 2
  * *
- **/
+-->
 
 <!DOCTYPE html>
 <html lang="es">

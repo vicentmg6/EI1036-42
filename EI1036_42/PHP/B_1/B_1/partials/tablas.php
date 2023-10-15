@@ -1,4 +1,4 @@
-/**
+<!--
  * * Descripción: Fichero PHP que muestra el listado de cursos.
  * *
  * * Descripción extensa: Este fichero muestra el listado de los 5 primeros cursos que se encuentran ofertados
@@ -9,7 +9,7 @@
  * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
  * * @version 2
  * *
- **/
+-->
      
 <!DOCTYPE html>
 <html lang="es">

@@ -52,9 +52,9 @@
 <br><br>
 <aside>
         <h2>Portal de Noticias</h2>
-        <p><a href="https://www.uji.es/com/noticies/2023/10/1q/premis-smart-ports/"><img src="./media/N1.png"></a>
-			<a href="https://www.elperiodicomediterraneo.com/formacion/universidades/2023/09/30/talento-servicio-salud-92708475.html"><img src="./media/ndos.png"></a>
-			<a href="https://www.uji.es/esports/base/arxiu/noticies/2023/9/treball-saludable/"><img src="./media/n3.png"></a>
+        <p><a href="https://www.uji.es/com/noticies/2023/10/1q/premis-smart-ports/"><img src="./media/N1.png" alt="Noticia 1"></a>
+			<a href="https://www.elperiodicomediterraneo.com/formacion/universidades/2023/09/30/talento-servicio-salud-92708475.html"><img src="./media/ndos.png" alt="Noticia 2"></a>
+			<a href="https://www.uji.es/esports/base/arxiu/noticies/2023/9/treball-saludable/"><img src="./media/n3.png" alt="Noticia 3"></a>
 		</p>
 </aside>
 <?php
