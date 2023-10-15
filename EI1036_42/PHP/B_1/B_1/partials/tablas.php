@@ -1,3 +1,16 @@
+/**
+ * * Descripción: Fichero PHP que muestra el listado de cursos.
+ * *
+ * * Descripción extensa: Este fichero muestra el listado de los 5 primeros cursos que se encuentran ofertados
+ * * con todos los datos requeridos en forma de tabla.
+ * *
+ * * @author  Javier <al404921@uji.es>  Vicent <al405660@uji.es>
+ * * @copyright 2023 Javier y Vicent
+ * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
+ * * @version 2
+ * *
+ **/
+     
 <!DOCTYPE html>
 <html lang="es">
 
