@@ -1,3 +1,16 @@
+/**
+ * * Descripción: Fichero PHP que gestiona la entrada de los datos del formulario
+ * *
+ * * Descripción extensa: Se comprueba que los datos sean correctos, o no estén repetidos y se añaden al fichero JSON
+ * *
+ * * @author  Javier <al404921@uji.es>  Vicent <al405660@uji.es>
+ * * @copyright 2023 Javier y Vicent
+ * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
+ * * @version 2
+ * *
+ **/
+
+
 <!DOCTYPE html>
 <html>
 <body>
