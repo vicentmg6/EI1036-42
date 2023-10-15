@@ -146,3 +146,13 @@ header>img{width:15%}
 .botonform{
     align-items: center;
 } 
+
+.listado{
+    text-align: center;
+    padding: 10px;
+} 
+
+.lista{
+    border-collapse: separate;
+    border-spacing: 20px;
+} 

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>    
 <?php
 /**
  * * Descripción: Controlador principal
@@ -45,6 +47,18 @@
     require_once(dirname(__FILE__)."/partials/header.php");
     require_once(dirname(__FILE__)."/partials/menu.php");
     require_once(dirname(__FILE__).$central);
-    echo "<br />",$action,"<br />",dirname(__FILE__),"<br />";
+    //echo "<br />",$action,"<br />",dirname(__FILE__),"<br />";
+?>
+<br><br>
+<aside>
+        <h2>Portal de Noticias</h2>
+        <p><a href="https://www.uji.es/com/noticies/2023/10/1q/premis-smart-ports/"><img src="./media/N1.png"></a>
+			<a href="https://www.elperiodicomediterraneo.com/formacion/universidades/2023/09/30/talento-servicio-salud-92708475.html"><img src="./media/ndos.png"></a>
+			<a href="https://www.uji.es/esports/base/arxiu/noticies/2023/9/treball-saludable/"><img src="./media/n3.png"></a>
+		</p>
+</aside>
+<?php
     require_once(dirname(__FILE__)."/partials/footer.php");
 ?>
+
+</html>

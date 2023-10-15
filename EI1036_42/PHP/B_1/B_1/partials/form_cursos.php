@@ -22,15 +22,15 @@
     <br/>
     <label for="alumnosmax">Número Alumnos Máximo</label>
     <br/>
-    <input type="number" id="numeromax" name="numeromax">
+    <input type="number" id="numeromax" name="numeromax" min="1">
     <br/>
     <label for="vacantes">Número Plazas Vacantes</label>
     <br/>
-    <input type="number" id="numerovac" name="numerovac">
+    <input type="number" id="numerovac" name="numerovac" min="0">
     <br/>
     <label for="precio">Precio</label>
     <br/>
-    <input type="number" id="precio" name="precio">
+    <input type="number" id="precio" name="precio" min="0">
     <br/>
 
     <input type="submit" value="Añadir" class="botonform">
