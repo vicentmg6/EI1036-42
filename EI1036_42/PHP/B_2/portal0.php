@@ -6,7 +6,7 @@
  * *
  * * Descripción extensa: Iremos añadiendo cosas complejas en PHP.
  * *
- * * @author  Lola <dllido@uji.es> <fulanito@example.com>
+ * * @author  Javier <al404921@uji.es> Vicent <al405660@uji.es>
  * * @copyright 2018 Lola
  * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
  * * @version 3
