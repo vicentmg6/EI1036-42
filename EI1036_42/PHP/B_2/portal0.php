@@ -19,34 +19,41 @@
 
     $action = (array_key_exists('action', $_REQUEST)) ? $_REQUEST["action"] : "home";
 
-
-    switch ($action) {
-        case "home":
-            $central = "/partials/home.php";
-            break;
-        case "form_register":
-            $central = "/partials/form_register.php";
-            break;
-        case "qui_som":
-            $central = "/partials/qui_som.php";
-            break;
-        case "lgpd":
-            $central = "/partials/lgpd.php";
-            break;
-        case "galeria":
-            $central = "/partials/galeria.php";
-            break;
-        case "tablas":
-            $central = "/partials/tablas.php";
-            break;
-        case "form_cursos":
-            $central = "/partials/form_cursos.php";
-            break;
-        default:
-            $central = "/partials/home.php";
-            $error_msg = "Acción No Permitida";
-            
+    if (isset($_REQUEST["action"])){
+        if(empty($_SERVER['HTTP_REFERER'])){
+            $error_msg = "Acción directa no permitida";
+            $central = "home.php";
+        }
+        else{
+            switch ($action) {
+                case "home":
+                    $central = "/partials/home.php";
+                    break;
+                case "form_register":
+                    $central = "/partials/form_register.php";
+                    break;
+                case "qui_som":
+                    $central = "/partials/qui_som.php";
+                    break;
+                case "lgpd":
+                    $central = "/partials/lgpd.php";
+                    break;
+                case "galeria":
+                    $central = "/partials/galeria.php";
+                    break;
+                case "tablas":
+                    $central = "/partials/tablas.php";
+                    break;
+                case "form_cursos":
+                    $central = "/partials/form_cursos.php";
+                    break;
+                default:
+                    $error_msg="Accion no permitida";
+                    $central = "home.php";
+            }
+        }
     }
+
 
     
     if (isset($error_msg)) 

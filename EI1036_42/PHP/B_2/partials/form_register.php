@@ -10,7 +10,7 @@
 		<br/>
 		<label for="correo">Identificador</label>
 		<br/>
-		<input type="text" name="correo" class="item_requerid" size="8" maxlength="8" pattern="\d{7}[A-Z,Ñ]" placeholder="0000000BB" />
+		<input type="text" name="correo" class="item_requerid" size="8" maxlength="8" pattern="\d{7}[A-Z,Ñ]" placeholder="000000BB" />
 		<br/>
 		<input type="submit" value="Enviar">
 		<input type="reset" value="Deshacer">

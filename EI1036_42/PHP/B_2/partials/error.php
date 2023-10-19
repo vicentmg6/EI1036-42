@@ -1,3 +1,4 @@
-<main>
-	<h1>Acción No Permitida</h1>
-</main>
+<?php
+require_once './portal0.php';
+echo $error_msg;
+?>
