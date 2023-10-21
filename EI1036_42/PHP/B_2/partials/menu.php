@@ -35,5 +35,8 @@
 		<li>
 			<a href="?action=qui_som">Quiénes Somos</a>
 		</li>
+		<li>
+			<a href="?action=login">Login</a>
+		</li>
 	</ul>
 </nav>

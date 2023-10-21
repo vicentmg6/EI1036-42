@@ -14,6 +14,14 @@
  * * mostrara el formulario de registro. Si no hay nada la página principal.
  **/
 
+    session_name("MiprimeraSesi");
+    session_start();
+    // if (!isset($_SESSION['visitados'])) {
+    //     $_SESSION['visitados'] = array() ;
+    // }
+    // $URL = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
+    // array_push($_SESSION['visitados'] , $URL);
+     
     require_once(dirname(__FILE__)."/partials/header.php");
     require_once(dirname(__FILE__)."/partials/menu.php");
 
@@ -47,6 +55,15 @@
                 case "form_cursos":
                     $central = "/partials/form_cursos.php";
                     break;
+                case "login":
+                    $central = "/partials/login.php";
+                    break;
+                case "form_login":
+                    $central = "/partials/form_login.php";
+                    break;
+                case "auten":
+                    $central = "/partials/auten.php";
+                    break;
                 default:
                     $error_msg="Accion no permitida";
                     $central = "home.php";
@@ -55,7 +72,6 @@
     }
 
 
-    
     if (isset($error_msg)) 
         require_once(dirname(__FILE__)."/partials/error.php");
     require_once(dirname(__FILE__).$central);

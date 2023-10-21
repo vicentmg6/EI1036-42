@@ -9,13 +9,15 @@
  * * @version 2
  * *
 -->
-
+<?php
+     session_name("MiprimeraSesi");
+     session_start();
+?>
 
 <!DOCTYPE html>
 <html>
 <body>
 <?php
-$dict =[]; 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
     // Obtener los datos del formulario
     $codigo = $_POST["codigo"];
