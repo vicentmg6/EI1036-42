@@ -9,10 +9,7 @@
  * * @version 2
  * *
 -->
-<?php
-     session_name("MiprimeraSesi");
-     session_start();
-?>
+
 
 <!DOCTYPE html>
 <html>

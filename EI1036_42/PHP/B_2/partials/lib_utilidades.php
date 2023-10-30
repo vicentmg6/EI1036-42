@@ -101,7 +101,7 @@ function carregar_dades($nomFitxer)
  * Devuelve verdadero si existe en el fichero un campo usuari y passwd correspondientes a los parámetros
  * @return bool
  */
-function autentificacion_ok($nomFitxer, $user, $passwd)
+function autentificación_ok($nomFitxer, $user, $passwd)
 { /* que carga el fitxer users.csv  y  comprueba  que existe una fila con
    $_REQUEST[“user”=user_id  y $_REQUEST[ “passwd”]
   */
@@ -121,7 +121,7 @@ function autentificacion_ok($nomFitxer, $user, $passwd)
  * Si existe deveuelve el rol del usuario
  * Si no existe devuelve falso indicando que no se ha autentificado.
  */
-function autentificado()
+function autorización()
 {
    if (isset($_SESSION["user_role"]))
       return $_SESSION["user_role"];

@@ -160,3 +160,7 @@ header>img{width:15%}
 time {
     color: white;
 }
+
+div{
+    align-items: right;
+} 

@@ -1,17 +1,25 @@
 <?php
-     session_name("MiprimeraSesi");
-     session_start();
-     include 'lib_utilidades.php';
 
-    if (autentificado()){
-        header("Location: portal0.php?action=form_login");
-        exit;
-    }
-    else{
-        session_destroy(); 
-        header("Location: portal0.php?action=form_login");
-    }
+    //require_once(dirname(__FILE__).'/sessions.php');
+    require_once(dirname(__FILE__).'/lib_utilidades.php');
+     switch($_REQUEST['action']){
+        case 'login':
+            $central = "/form_login.php";
+            break;
+        case 'auten':
+            if ($_SERVER["REQUEST_METHOD"] == "POST"){
+                $username = $_POST['user'];
+                $password = $_POST['pass'];
+            } 
+            if (autentificación_ok(dirname(__FILE__).'/../recursos/seguro/users.csv',$username,$password)){
+                $aux = $_SESSION["user_name"];
+                echo("Bienvenido/a $aux");
+            }
+            else{
+                $central = "/form_login.php";
+            }
+            break;
+     }
+
+     require_once(dirname(__FILE__).$central);
 ?>
-
-
-

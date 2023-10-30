@@ -16,16 +16,30 @@
 
     session_name("MiprimeraSesi");
     session_start();
-    // if (!isset($_SESSION['visitados'])) {
-    //     $_SESSION['visitados'] = array() ;
-    // }
-    // $URL = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
-    // array_push($_SESSION['visitados'] , $URL);
-     
+    include 'partials/lib_utilidades.php';
+
+
     require_once(dirname(__FILE__)."/partials/header.php");
     require_once(dirname(__FILE__)."/partials/menu.php");
 
+ /*
+    if (!autentificado()){
+        ?> <div id=loguear>
+                <a href="?action=login">Entrar</a>
+            </div>
+        <?php
+    }
+    else{
+        ?> <div id=loguear>
+                <a href="?action=logout">Salir</a>
+            </div>
+        <?php
+    }
+
+ */
+
     $action = (array_key_exists('action', $_REQUEST)) ? $_REQUEST["action"] : "home";
+
 
     if (isset($_REQUEST["action"])){
         if(empty($_SERVER['HTTP_REFERER'])){
@@ -62,7 +76,7 @@
                     $central = "/partials/form_login.php";
                     break;
                 case "auten":
-                    $central = "/partials/auten.php";
+                    $central = "/partials/login.php";
                     break;
                 default:
                     $error_msg="Accion no permitida";
@@ -70,7 +84,6 @@
             }
         }
     }
-
 
     if (isset($error_msg)) 
         require_once(dirname(__FILE__)."/partials/error.php");

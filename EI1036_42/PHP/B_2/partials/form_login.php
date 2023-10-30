@@ -9,15 +9,6 @@
  * * @version 3
  * * 
 -->
-<?php
-	session_name("MiprimeraSesi");
-	session_start();
-	if (!isset($_SESSION['visitados'])) {
-        $_SESSION['visitados'] = array() ;
-    }
-    $URL = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
-    array_push($_SESSION['visitados'] , $URL);
-?>
 	<h1>Login </h1>
 	<form class="form_usuario" action="?action=auten" method="POST">
 		<label for="user">Usuario</label>
