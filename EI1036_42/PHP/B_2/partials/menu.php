@@ -17,13 +17,11 @@
 			<a href="?action=home">Home</a>
 		</li>
 		<li>
-			<a href="?action=form_register">Registro</a>
+			<a href="?action=listar">Listado</a>
 		</li>
+		
 		<li>
-			<a href="?action=tablas">Listado</a>
-		</li>
-		<li>
-			<a href="?action=form_cursos">Cursos</a>
+			<a href="?action=registrar">Registrar</a>
 		</li>
 
 		<li>
@@ -35,8 +33,8 @@
 		<li>
 			<a href="?action=qui_som">Quiénes Somos</a>
 		</li>
-		<li>
+		<!-- <li>
 			<a href="?action=login">Login</a>
-		</li>
+		</li> -->
 	</ul>
 </nav>

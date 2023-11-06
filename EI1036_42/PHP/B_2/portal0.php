@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>    
+<html>   
 <?php
 /**
  * * Descripción: Controlador principal
@@ -16,14 +16,14 @@
 
     session_name("MiprimeraSesi");
     session_start();
-    include 'partials/lib_utilidades.php';
+    require_once(dirname(__FILE__).'/partials/lib_utilidades.php');
 
 
     require_once(dirname(__FILE__)."/partials/header.php");
     require_once(dirname(__FILE__)."/partials/menu.php");
 
- /*
-    if (!autentificado()){
+
+    if (!autorización()){
         ?> <div id=loguear>
                 <a href="?action=login">Entrar</a>
             </div>
@@ -36,7 +36,7 @@
         <?php
     }
 
- */
+
 
     $action = (array_key_exists('action', $_REQUEST)) ? $_REQUEST["action"] : "home";
 
@@ -44,15 +44,25 @@
     if (isset($_REQUEST["action"])){
         if(empty($_SERVER['HTTP_REFERER'])){
             $error_msg = "Acción directa no permitida";
-            $central = "home.php";
+            $central = "/partials/home.php";
         }
         else{
             switch ($action) {
                 case "home":
                     $central = "/partials/home.php";
                     break;
-                case "form_register":
-                    $central = "/partials/form_register.php";
+                case "registrar":
+                    if($_SESSION["user_role"] == "admin"){
+                        $central = "/partials/form_cursos.php";
+                    }
+                    else{
+                        echo "Acceso no permitido";
+                        $central = "/partials/home.php";
+                    }
+                    break;
+                case "registro":
+                    require_once(dirname(__FILE__)."/partials/cursos.php");
+                    $central = "/partials/listar.php";
                     break;
                 case "qui_som":
                     $central = "/partials/qui_som.php";
@@ -63,11 +73,8 @@
                 case "galeria":
                     $central = "/partials/galeria.php";
                     break;
-                case "tablas":
-                    $central = "/partials/tablas.php";
-                    break;
-                case "form_cursos":
-                    $central = "/partials/form_cursos.php";
+                case "listar":
+                    $central = "/partials/listar.php";
                     break;
                 case "login":
                     $central = "/partials/login.php";
@@ -78,9 +85,14 @@
                 case "auten":
                     $central = "/partials/login.php";
                     break;
+                case "logout":
+                    $central = "/partials/login.php";
+                    break;
+                case "borrar":
+
                 default:
                     $error_msg="Accion no permitida";
-                    $central = "home.php";
+                    $central = "/partials/home.php";
             }
         }
     }

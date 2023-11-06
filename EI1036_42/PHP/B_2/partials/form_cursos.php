@@ -10,50 +10,34 @@
  * *
 -->
 
-<?php
-     session_name("MiprimeraSesi");
-     session_start();
-     if (!isset($_SESSION['visitados'])) {
-        $_SESSION['visitados'] = array() ;
-     }
-     $URL = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
-     array_push($_SESSION['visitados'] , $URL);
-?>
+  
+        <h1>Gestión de Cursos</h1>
 
-<!DOCTYPE html>
-<html lang="es">
+        <form action="?action=registro" method="POST" class="formulario">
+            <legend>Datos del curso</legend>
+            <label for="codigo">Código</label>
+            <br/>
+            <input type="text" id="codigo" name="codigo" required class="item_requerid" size="20" maxlength="25" placeholder="BB0000"
+                pattern="[A-Z,Ñ][A-Z,Ñ]\d{4}"/>
+            <br/>
+            <label for="descripcion">Descripción</label>
+            <br/>
+            <textarea id="descripcion" name="descripcion" requirows=4 cols=50 maxlength="300" placeholder="Breve descripción"></textarea>
+            <br/>
+            <label for="numeromax">Número Alumnos Máximo</label>
+            <br/>
+            <input type="number" id="numeromax" name="numeromax" min="1">
+            <br/>
+            <label for="numerovac">Número Plazas Vacantes</label>
+            <br/>
+            <input type="number" id="numerovac" name="numerovac" min="0">
+            <br/>
+            <label for="precio">Precio</label>
+            <br/>
+            <input type="number" id="precio" name="precio" min="0">
+            <br/>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Form Cursos</title>
-    <link rel="stylesheet" href="./css/estilo.css" type="text/css">
-</head>
+            <input type="submit" value="Añadir" class="botonform">
+        </form>
+      
 
-<h1>Gestión de Cursos</h1>
-
-<form action="/partials/cursos.php" method="POST" class="formulario">
-    <legend>Datos del curso</legend>
-    <label for="codigo">Código</label>
-    <br/>
-    <input type="text" id="codigo" name="codigo" required class="item_requerid" size="20" maxlength="25" placeholder="Código"
-		 placeholder="Actividad1" />
-    <br/>
-    <label for="descripcion">Descripción</label>
-    <br/>
-    <textarea id="descripcion" name="descripcion" requirows=4 cols=50 maxlength="300" placeholder="Breve descripción"></textarea>
-    <br/>
-    <label for="numeromax">Número Alumnos Máximo</label>
-    <br/>
-    <input type="number" id="numeromax" name="numeromax" min="1">
-    <br/>
-    <label for="numerovac">Número Plazas Vacantes</label>
-    <br/>
-    <input type="number" id="numerovac" name="numerovac" min="0">
-    <br/>
-    <label for="precio">Precio</label>
-    <br/>
-    <input type="number" id="precio" name="precio" min="0">
-    <br/>
-
-    <input type="submit" value="Añadir" class="botonform">
-</form>

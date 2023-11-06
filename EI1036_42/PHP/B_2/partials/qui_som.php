@@ -10,7 +10,7 @@
  * * @version 2
  * *
 -->
-<?php
+<!--?php
      session_name("MiprimeraSesi");
      session_start();
      if (!isset($_SESSION['visitados'])) {
@@ -18,7 +18,7 @@
      }
      $URL = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
      array_push($_SESSION['visitados'] , $URL);
-?>   
+?>-->
 <!DOCTYPE html>
 <html lang="es">
 
