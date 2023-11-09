@@ -19,11 +19,9 @@
 		<li>
 			<a href="?action=listar">Listado</a>
 		</li>
-		
 		<li>
 			<a href="?action=registrar">Registrar</a>
 		</li>
-
 		<li>
 			<a href="?action=galeria">Galería</a>
 		</li>
@@ -33,8 +31,5 @@
 		<li>
 			<a href="?action=qui_som">Quiénes Somos</a>
 		</li>
-		<!-- <li>
-			<a href="?action=login">Login</a>
-		</li> -->
 	</ul>
 </nav>

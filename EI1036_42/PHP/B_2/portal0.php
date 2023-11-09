@@ -89,7 +89,28 @@
                     $central = "/partials/login.php";
                     break;
                 case "borrar":
-
+                    if($_SESSION["user_role"] == "admin"){
+                        $curso = $_REQUEST["curso"];
+                        if($curso != null){
+                            $file = '/recursos/cursos.json';
+                            $data = carregar_dades($file);
+                            $codigo = $curso["codigo"]; 
+                            if(array_key_exists($codigo, $data)){
+                                unset($data[$codigo]); //BORRAR CURSO CONTANDO QUE EN $CURSO SEA UN ARRAY CON CODIGO, NUM ALUM, ETC
+                                guarda_dades($data,$file);
+                                $central = "/partials/listar.php";
+                                break;
+                            }
+                            else{
+                                echo "No existe el curso introducido en el diccionario.";
+                            }  
+                        }
+                        else{
+                            //Aquí tampoco
+                        }  
+                    }
+                    //No sé que se devuelve aquí
+                    break; 
                 default:
                     $error_msg="Accion no permitida";
                     $central = "/partials/home.php";
