@@ -25,13 +25,13 @@
             foreach($data as $clave => $valor){
 
                 echo '<tr>';
-                echo '<form action="?action=registrar"  method="POST">';
-                echo '</tr>';
+                echo '<form action="?action=registrar"  method="GET">';
+                echo '<td><input type="text" id="curso" name="curso" value=$clave readonly></td>';
+                echo "<td><input type='submit' name='modificar' value='Modificar'></td>";
+                echo "<td><input type='submit' name='borrar' value='Borrar' formaction='?action=borrar'></td>";
 
-                
-                echo "<input type='submit' name='modificar' value='Modificar'>";
-                echo "<input type='submit' name='borrar' value='Borrar'>";
                 echo "</form>";
+                echo '</tr>';
             }
              
         ?>
