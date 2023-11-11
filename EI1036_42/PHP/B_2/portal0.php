@@ -53,7 +53,13 @@
                     break;
                 case "registrar":
                     if($_SESSION["user_role"] == "admin"){
+                        $curso = $_REQUEST["curso"];
+                        if($curso == null){
                         $central = "/partials/form_cursos.php";
+                        }
+                        else{
+                            $central = "/partials/listar_admin.php";
+                        }
                     }
                     else{
                         echo "Acceso no permitido";
@@ -74,7 +80,12 @@
                     $central = "/partials/galeria.php";
                     break;
                 case "listar":
-                    $central = "/partials/listar.php";
+                    if($_SESSION["user_role"] == "admin"){
+                        $central = "/partials/listar_admin.php";
+                    } 
+                    else{
+                        $central = "/partials/listar.php";
+                    } 
                     break;
                 case "login":
                     $central = "/partials/login.php";
