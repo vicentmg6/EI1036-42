@@ -20,7 +20,8 @@
         <?php
             require_once(dirname(__FILE__).'/lib_utilidades.php');
             $curso = $_REQUEST["curso"];
-            if($curso != null){
+            $action = $_REQUEST["action"]; 
+            if($curso != null and $action != "borrar"){
                 $dicc= array(
                     "descripcion" => $_REQUEST["descripcion"],
                     "numeromax" => $_REQUEST["numeromax"],

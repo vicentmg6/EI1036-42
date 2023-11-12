@@ -31,5 +31,8 @@
 		<li>
 			<a href="?action=qui_som">Quiénes Somos</a>
 		</li>
+		<li>
+			<a href="?action=subir_foto">Subir foto</a>
+		</li>
 	</ul>
 </nav>

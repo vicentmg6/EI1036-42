@@ -103,20 +103,22 @@
                     if($_SESSION["user_role"] == "admin"){
                         $curso = $_REQUEST["curso"];
                         if($curso != null){
-                            $file = '/recursos/cursos.json';
+                            $file = './recursos/cursos.json';
                             $data = carregar_dades($file);
-                            unset($data[$curso]); //BORRAR CURSO CONTANDO QUE EN $CURSO SEA UN ARRAY CON CODIGO, NUM ALUM, ETC
+                            unset($data[$curso]); //BORRAR CURSO CONTANDO QUE EN $CURSO SEA UN ARRAY CON CODIGO, NUM ALUM, ETC 
                             guarda_dades($data,$file);
-                            $central = "/partials/listar.php";
+                            $central = "/partials/listar_admin.php";
                             break;
                             }
-                        }
-                        else{
-                            //Aquí tampoco
-                        }  
-                    
-                    //No sé que se devuelve aquí
+                        }                  
                     break; 
+                case "foto_upload":
+                    var_dump($_FILES);
+                    $destino = "/media/fotos";
+                    move_uploaded_file($_FILES["foto_cliente"]['tmp_name'],$destino);
+                case "subir_foto":
+                    $central = "/partials/form_foto.php";
+                    break;
                 default:
                     $error_msg="Accion no permitida";
                     $central = "/partials/home.php";
