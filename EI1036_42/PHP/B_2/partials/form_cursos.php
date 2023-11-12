@@ -12,7 +12,7 @@
 
         <h1>Gestión de Cursos</h1>
 
-        <form action="?action=registro" method="POST" class="formulario">
+        <form action="?action=registro" method="POST" class="formulario" enctype="multipart/form-data">
             <legend>Datos del curso</legend>
             <label for="codigo">Código</label>
             <br/>
@@ -35,7 +35,14 @@
             <br/>
             <input type="number" id="precio" name="precio" min="0">
             <br/>
+            <label for="name_foto" id="name_foto" name="name_foto">Nombre de foto</label>
+            <br/>
+            <input type="text" name="name_foto" id="name" class="item_requerid" size="20" maxlength="25">
+            <br/>
+            <label for="foto_cliente" id="foto_cliente" name="foto_cliente">Selección Foto</label>
+            <br/>
+            <input type="file" accept="image/*" name="foto_cliente" id="upload">
+            <br/>
 
             <input type="submit" value="Añadir" class="botonform">
         </form>
-

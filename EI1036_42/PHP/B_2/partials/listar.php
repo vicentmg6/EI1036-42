@@ -29,6 +29,8 @@
             <th>Número Máximo de Alumnos</th>
             <th>Plazas Vacantes</th>
             <th>Precio</th>
+            <th>NomFoto</th>
+            <th>RutaFoto</th>
         </tr>
         <?php
             require_once(dirname(__FILE__).'/lib_utilidades.php');
@@ -43,6 +45,8 @@
                 echo '<td class="listado">' . $valor[0]["numeromax"]  . '</td>';
                 echo '<td class="listado">' . $valor[0]["numerovac"] . '</td>';
                 echo '<td class="listado">' . $valor[0]["precio"] . '</td>';
+                echo '<td class="listado">' . $valor[0]["nom_imagen"] . '</td>';
+                echo '<td class="listado"><img src="'.$valor[0]["foto_cliente"].'" alt="Imagen No Encontrada" height="100" width="100"></td>';
                 echo '</tr>';
 
             }

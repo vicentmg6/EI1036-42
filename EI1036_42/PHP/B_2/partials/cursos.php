@@ -11,6 +11,8 @@
 -->
 
 <?php
+//var_dump($_FILES);
+//var_dump($_POST);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
     // Obtener los datos del formulario
@@ -19,16 +21,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $numeromax= $_POST["numeromax"];
     $numerovac= $_POST["numerovac"];
     $precio= $_POST["precio"];
+    $name_foto = $_POST["name_foto"];
+    $destino = "../media/fotos/".$_FILES["foto_cliente"]["name"];
 
     if ($numerovac <= $numeromax){
         $datos= array(
             "descripcion" => $descripcion,
             "numeromax" => $numeromax,
             "numerovac" => $numerovac,
-            "precio" => $precio
+            "precio" => $precio,
+            "nom_imagen" => $name_foto,
+            "foto_cliente" => $destino
         );
 
-
+        move_uploaded_file($_FILES["foto_cliente"]['tmp_name'],$destino);
         $file = './recursos/cursos.json';
         $data = carregar_dades($file);
 

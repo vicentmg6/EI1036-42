@@ -114,7 +114,7 @@
                     break; 
                 case "foto_upload":
                     var_dump($_FILES);
-                    $destino = "/media/fotos";
+                    $destino = "./media/fotos/".$_FILES["foto_cliente"]["name"] ;
                     move_uploaded_file($_FILES["foto_cliente"]['tmp_name'],$destino);
                 case "subir_foto":
                     $central = "/partials/form_foto.php";
@@ -138,6 +138,39 @@
 			<a href="https://www.elperiodicomediterraneo.com/formacion/universidades/2023/09/30/talento-servicio-salud-92708475.html"><img src="/media/ndos.png" alt="Noticia 2"></a>
 			<a href="https://www.uji.es/esports/base/arxiu/noticies/2023/9/treball-saludable/"><img src="/media/n3.png" alt="Noticia 3"></a>
 		</p>
+</aside>
+<aside class="ej14">
+    <?php
+    $imagenes = array(
+    "./media/N1.PNG",
+    "./media/centro.png",
+    "./media/ej2.png",
+    "./media/ejemplo.png",
+    "./media/favicon.ico",
+    "./media/imagen1.png",
+    "./media/imagen17.png",
+    "./media/n3.PNG",
+    "./media/ndos.PNG",
+    "./media/univ1.jpeg",
+    "./media/univ10.jpeg",
+    "./media/univ11.jpeg",
+    "./media/univ12.jpeg",
+    "./media/univ2.jpeg",
+    "./media/univ3.jpeg",
+    "./media/univ4.jpeg",
+    "./media/univ5.jpeg",
+    "./media/univ6.jpeg",
+    "./media/univ7.jpeg",
+    "./media/univ8.jpeg",
+    "./media/univ9.jpeg"
+    );
+
+    shuffle($imagenes);
+
+     for ($i = 0; $i < min(9, count($imagenes)); $i++) {
+        echo '<img class="bordes" src="' . $imagenes[$i] . '" alt="Imagen ' . ($i + 1) . '">';
+     }
+     ?>
 </aside>
 <?php
     require_once(dirname(__FILE__)."/partials/footer.php");

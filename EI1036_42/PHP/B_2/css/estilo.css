@@ -165,3 +165,12 @@ time {
     float:right;
 } 
 
+.ej14{
+    height: 100%;
+} 
+
+.bordes{
+    border: 2px solid #000000;
+    height: 135px;
+    width: 185px
+} 
