@@ -1,0 +1,82 @@
+{
+    "EI1040": [
+        {
+            "descripcion": "asd",
+            "numeromax": "6",
+            "numerovac": "3",
+            "precio": "7"
+        }
+    ],
+    "EI1042": [
+        {
+            "descripcion": "asddwsagdshg",
+            "numeromax": "9",
+            "numerovac": "3",
+            "precio": "7"
+        }
+    ],
+    "EI1037": [
+        {
+            "descripcion": "test",
+            "numeromax": "7",
+            "numerovac": "4",
+            "precio": "9"
+        }
+    ],
+    "EI1050": [
+        {
+            "descripcion": "test2",
+            "numeromax": "13",
+            "numerovac": "7",
+            "precio": "16"
+        }
+    ],
+    "EI1052": [
+        {
+            "descripcion": "test2retge",
+            "numeromax": "11",
+            "numerovac": "10",
+            "precio": "23"
+        }
+    ],
+    "EI1058": [
+        {
+            "descripcion": "aaa",
+            "numeromax": "5",
+            "numerovac": "2",
+            "precio": "3"
+        }
+    ],
+    "a": [
+        {
+            "descripcion": "",
+            "numeromax": "",
+            "numerovac": "",
+            "precio": ""
+        }
+    ],
+    "Prueba": [
+        {
+            "descripcion": "asd",
+            "numeromax": "4",
+            "numerovac": "2",
+            "precio": "3"
+        }
+    ],
+    "aaaaa": [
+        {
+            "descripcion": "aaa",
+            "numeromax": "2",
+            "numerovac": "1",
+            "precio": "1"
+        }
+    ],
+    "": [
+        {
+            "descripcion": null,
+            "numeromax": null,
+            "numerovac": null,
+            "precio": null
+        }
+    ]
+}
