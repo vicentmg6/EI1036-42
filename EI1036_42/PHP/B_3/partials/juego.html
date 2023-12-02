@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head> 
+    <meta charset="UTF-8">
+    <title>Juego</title>
+    <style>
+        canvas {
+          border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="600" height="600"></canvas>
+    <script type="text/javascript">
+        const canvas = document.getElementById("gameCanvas");
+        const contexto = canvas.getContext("2d");
+
+        let rectangulos = [];
+        let rectangulosVerdes = 0;
+        
+        canvas.addEventListener("click", (event) => {
+            const tamRect = Math.floor(Math.random() * (90 - 30 + 1)) + 30;
+            const rectX = event.clientX - canvas.getBoundingClientRect().left - tamRect / 2;
+            const rectY = event.clientY - canvas.getBoundingClientRect().top - tamRect / 2;
+
+            const nuevoRect = {x: rectX, y: rectY, size: tamRect }; 
+
+            let solapa = false;
+            for (const rect of rectangulos){
+                if (nuevoRect.x < rect.x + rect.size && nuevoRect.x + nuevoRect.size > rect.x && nuevoRect.y < rect.y + rect.size && nuevoRect.y + nuevoRect.size > rect.y){
+                    solapa = true;
+                    break;
+                } 
+            }
+            
+            if (solapa){
+                dibujaRectangulo (nuevoRect, "red");
+            } 
+            else{
+                dibujaRectangulo(nuevoRect, "green");
+                rectangulosVerdes++;
+
+                if (rectangulosVerdes == 10){
+                    alert("Has dibujado 10 rectángulos verdes.");
+                } 
+            }
+            rectangulos.push(nuevoRect);
+        } );
+
+        function dibujaRectangulo(rectangulo, color) {
+            contexto.fillStyle = color;
+            contexto.fillRect(rectangulo.x, rectangulo.y, rectangulo.size, rectangulo.size);
+        }
+
+    </script>
+
+
+
+
+</body>
+
+
+</html>

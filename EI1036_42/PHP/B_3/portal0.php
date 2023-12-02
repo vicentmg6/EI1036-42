@@ -62,7 +62,7 @@
                         }
                     }
                     else{
-                        echo "Acceso no permitido";
+                        $error_msg = "Acceso no permitido";
                         $central = "/partials/home.php";
                     }
                     break;
@@ -116,8 +116,15 @@
                     var_dump($_FILES);
                     $destino = "./media/fotos/".$_FILES["foto_cliente"]["name"] ;
                     move_uploaded_file($_FILES["foto_cliente"]['tmp_name'],$destino);
+                    break;
                 case "subir_foto":
                     $central = "/partials/form_foto.php";
+                    break;
+                case "juego":
+                    $central = "/partials/juego.html";
+                    break;
+                case "firma":
+                    $central = "/partials/firma_online.html";
                     break;
                 default:
                     $error_msg="Accion no permitida";
@@ -125,6 +132,9 @@
             }
         }
     }
+    else{
+        $central = "/partials/home.php";
+    } 
 
     if (isset($error_msg)) 
         require_once(dirname(__FILE__)."/partials/error.php");

@@ -31,7 +31,7 @@
             if (autentificación_ok(dirname(__FILE__).'/../recursos/seguro/users.csv',$username,$password)){
                 $aux = $_SESSION["user_name"];
                 echo("Bienvenido/a $aux");
-                var_dump($_SESSION);
+                $central = "/home.php";
             }
             else{
                 $central = "/form_login.php";

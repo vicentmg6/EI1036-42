@@ -46,14 +46,7 @@
 
             <input type="submit" value="Añadir" class="botonform">
         </form>
-
-        <canvas id="sketchpad" width="600px" height="500px" style="background-color: coral;"></canvas>
-	    <p>
-		    <span id="dibujar"> DIBUJAR </span>
-		    <span id="copiar"> COPIAR </span>
-		    <span id="limpiar"> LIMPIAR </span>
-		    <span id="guardar"> GUARDAR </span>
-	    </p>
+        
         <script>
             function mostrarFoto(nodo, imagen) {
                 var reader = new FileReader();
@@ -119,7 +112,7 @@
                     }
                 else alert("Seleccione una imagen PNG");
                 });
-                activarCanvas(imagen);
+                //activarCanvas(imagen);
             
             }
 

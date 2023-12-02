@@ -30,22 +30,30 @@
             <th>Número Máximo de Alumnos</th>
             <th>Plazas Vacantes</th>
             <th>Precio</th>
-            <th>NomFoto</th>
-            <th>RutaFoto</th>
+            <th>Foto</th>
         </tr>
         <?php
             require_once(dirname(__FILE__).'/lib_utilidades.php');
             $curso = $_REQUEST["curso"];
-            $action = $_REQUEST["action"]; 
+            $action = $_REQUEST["action"];  
+            var_dump($_REQUEST);
             if($curso != null and $action != "borrar"){
                 $dicc= array(
                     "descripcion" => $_REQUEST["descripcion"],
                     "numeromax" => $_REQUEST["numeromax"],
                     "numerovac" => $_REQUEST["numerovac"],
                     "precio" => $_REQUEST["precio"],
-                    "nom_imagen" => $_REQUEST["precio"], 
-                    "foto_cliente" => $_REQUEST["destino"] 
+                    "foto_cliente" => $_REQUEST["foto_cliente"]
                 );
+                var_dump($dicc);
+                try {
+                    //var_dump($_REQUEST["destino"]);
+                    $f_c = $_REQUEST["foto_cliente"];
+                    move_uploaded_file($_FILES["foto_cliente"]['tmp_name'],'./media/fotos/'.$f_c);
+                }
+                catch (Exception $E){
+                    print($E -> getMessage());
+                }
                 $file = './recursos/cursos.json';
                 $data = carregar_dades($file);
                 unset($data[$curso]);
@@ -66,8 +74,9 @@
                 echo '<td><input type="number" id="numeromax" name="numeromax" min="1" value="' .$valor[0]["numeromax"].'" placeholder="' .$valor[0]["numeromax"]. '"></td>';
                 echo '<td><input type="number" id="numerovac" name="numerovac" min="0" value="' .$valor[0]["numerovac"]. '" placeholder="' .$valor[0]["numerovac"]. '"></td>';
                 echo '<td><input type="number" id="precio" name="precio" min="0" value="' .$valor[0]["precio"].'" placeholder="' .$valor[0]["precio"]. '"></td>';
-                echo '<td><input type="text" name="nom_imagen" id="nom_iamgen" class="item_requerid" value="'.$valor[0]["nom¨_imagen"]. '" placeholder="' .$valor[0]["nom_imagen"]. '"size="20" maxlength="25" readonly></td>';
-                echo '<td><input type="text" name="foto_cliente" id="foto_cliente" class="item_requerid" value="'.$valor[0]["foto_cliente"]. '" placeholder="' .$valor[0]["foto_cliente"]. '"size="20" maxlength="25" readonly></td>';
+                echo '<td class="listado"><img src="'.$valor[0]["foto_cliente"].'" alt="Imagen No Encontrada" height="100" width="100"></td>';
+
+                echo '<td><input type="file" accept="image/*" name="foto_cliente" id="upload"></td>';
                 echo '<td><input type="submit" name="action" value="registrar" class="botonform"></td>';
                 echo '<td><input type="submit" name="action" value="borrar" formaction="?action=borrar" class="botonform"></td>';
                 

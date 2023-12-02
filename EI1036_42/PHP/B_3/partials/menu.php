@@ -32,7 +32,13 @@
 			<a href="?action=qui_som">Quiénes Somos</a>
 		</li>
 		<li>
-			<a href="?action=subir_foto">Subir foto</a>
+			<a href="?action=subir_foto">Subir Foto</a>
+		</li>
+		<li>
+			<a href="?action=juego">Juego3.3</a>
+		</li>
+		<li>
+			<a href="?action=firma">Firma</a>
 		</li>
 	</ul>
 </nav>
