@@ -120,32 +120,5 @@
         }
 
         ready();
-        document.getElementById('form').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-
-            var canvas = document.querySelector("#sketchpad");
-
-            // Obtener la imagen del canvas como Blob
-            canvas.toBlob(function (blob) {
-                // Crear un nuevo objeto FormData y agregar el Blob
-                var formData = new FormData();
-                formData.append("foto_cliente", blob, "nombre_archivo.png");
-
-                // Puedes agregar otros datos del formulario si es necesario
-                // formData.append("otro_campo", valor);
-
-                // Enviar el formulario al servidor
-                fetch(this.action, {
-                    method: "POST",
-                    body: formData,
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Manejar la respuesta del servidor si es necesario
-                    console.log('Respuesta del servidor:', data);
-                })
-                .catch(error => console.error('Error:', error));
-            }, "image/png");
-        });
 
     </script> 
