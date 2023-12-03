@@ -126,6 +126,13 @@
                 case "firma":
                     $central = "/partials/firma_online.html";
                     break;
+                case "firmado":
+                    require_once(dirname(__FILE__)."/partials/firmados.php");
+                    $central = "/partials/home.php";
+                    break;
+                case "juego4":
+                    $central = "/partials/juego4.html";
+                    break;
                 default:
                     $error_msg="Accion no permitida";
                     $central = "/partials/home.php";

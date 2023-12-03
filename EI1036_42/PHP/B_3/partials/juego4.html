@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego de Rectángulos</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas" width="400" height="400"></canvas>
+<button id="iniciarJuego">Iniciar Juego</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var rectangulos = [];
+    var tiempoJuego = 700;
+    var puntuacion = 0;
+    var juegoIniciado = false;
+
+    document.getElementById('iniciarJuego').addEventListener('click', function () {
+        if (!juegoIniciado) {
+            juegoIniciado = true;
+            iniciarJuego();
+        }
+    });
+
+    function iniciarJuego() {
+        // Crear 10 rectángulos iniciales
+        for (var i = 0; i < 10; i++) {
+            rectangulos.push({
+                x: Math.random() * (canvas.width - 30),
+                y: Math.random() * (canvas.height - 30),
+                ancho: 30,
+                alto: 30,
+                visible: true
+            });
+        }
+
+        // Iniciar el juego
+        actualizarJuego();
+    }
+
+    function dibujarRectangulos() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        rectangulos.forEach(function (rect) {
+            if (rect.visible) {
+                ctx.fillStyle = 'green';
+                ctx.fillRect(rect.x, rect.y, rect.ancho, rect.alto);
+            }
+        });
+    }
+
+    function actualizarJuego() {
+        dibujarRectangulos();
+        tiempoJuego--;
+
+        if (tiempoJuego === 0) {
+            mostrarResultado();
+        } else {
+            requestAnimationFrame(actualizarJuego); //METODO PARA ANIMACIONES EN EL NAVEGADOR, BUSCADO
+        }
+    }
+
+    canvas.addEventListener('click', function (event) {
+        if (juegoIniciado) {
+            var rectanguloClic = obtenerRectanguloClic(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+
+            if (rectanguloClic) {
+                if (rectanguloClic.visible) {
+                    rectanguloClic.visible = false;
+                    puntuacion++;
+                }
+            }
+        }
+    });
+
+    function obtenerRectanguloClic(x, y) {
+        for (var i = 0; i < rectangulos.length; i++) {
+            var rect = rectangulos[i];
+            if (x >= rect.x && x <= rect.x + rect.ancho && y >= rect.y && y <= rect.y + rect.alto) {
+                return rect;
+            }
+        }
+        return null;
+    }
+
+    function mostrarResultado() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (puntuacion === 10) {
+            alert("Has ganado")
+        } else {
+            alert("Has perdido")
+        }
+
+        // Reiniciar el juego
+        juegoIniciado = false;
+        rectangulos = [];
+        tiempoJuego = 700;
+        puntuacion = 0;
+    }
+});
+</script>
+
+</body>
+</html>

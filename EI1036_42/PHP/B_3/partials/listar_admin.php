@@ -36,20 +36,22 @@
             require_once(dirname(__FILE__).'/lib_utilidades.php');
             $curso = $_REQUEST["curso"];
             $action = $_REQUEST["action"];  
-            var_dump($_REQUEST);
+            //var_dump($_REQUEST);
             if($curso != null and $action != "borrar"){
                 $dicc= array(
                     "descripcion" => $_REQUEST["descripcion"],
                     "numeromax" => $_REQUEST["numeromax"],
                     "numerovac" => $_REQUEST["numerovac"],
                     "precio" => $_REQUEST["precio"],
-                    "foto_cliente" => $_REQUEST["foto_cliente"]
+                    "foto_cliente" => "./media/fotos".$_FILES[$_REQUEST["foto_cliente"]] 
                 );
-                var_dump($dicc);
                 try {
                     //var_dump($_REQUEST["destino"]);
-                    $f_c = $_REQUEST["foto_cliente"];
-                    move_uploaded_file($_FILES["foto_cliente"]['tmp_name'],'./media/fotos/'.$f_c);
+                    $f_c = $dicc["foto_cliente"];
+                    var_dump("1".$_FILES["foto_cliente"]['tmp_name']);
+                    var_dump("2"."./media/fotos".$_FILES[$_REQUEST["foto_cliente"]]);
+                    var_dump("3".$f_c);
+                    move_uploaded_file($_FILES["foto_cliente"]['tmp_name'],$f_c);
                 }
                 catch (Exception $E){
                     print($E -> getMessage());

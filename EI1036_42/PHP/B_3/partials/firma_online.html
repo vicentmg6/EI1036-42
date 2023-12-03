@@ -12,7 +12,7 @@
 
     <h1>Firma Online</h1>
 
-    <form action="?action=firma" method="POST" class="formulario" enctype="multipart/form-data"></form>
+    <form action="?action=firmado" method="POST" class="formulario" enctype="multipart/form-data" id="form"></form>
         <label for="foto_cliente" id="foto_cliente" name="foto_cliente">Selección Foto</label>
         <br/>
         <input type="file" accept="image/*" name="foto_cliente" id="upload">
@@ -109,16 +109,43 @@
             imagen = fichero.parentNode.appendChild(child);
             fichero.addEventListener("change", function (event) {
             if (fichero.files[0]["type"] == "image/jpg" || fichero.files[0]["type"] == "image/jpeg")
-                if (fichero.size <= 400 * 1024)
+                if (fichero.files[0].size  <= 400 * 1024)
                     {mostrarFoto(this, imagen);
                     }
                   else alert("La imagen tiene que ser de menos de 400KB");
              else alert("Seleccione una imagen JPG o JPEG") ;
             });
             activarCanvas(imagen);
-        
+
         }
 
         ready();
+        document.getElementById('form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+
+            var canvas = document.querySelector("#sketchpad");
+
+            // Obtener la imagen del canvas como Blob
+            canvas.toBlob(function (blob) {
+                // Crear un nuevo objeto FormData y agregar el Blob
+                var formData = new FormData();
+                formData.append("foto_cliente", blob, "nombre_archivo.png");
+
+                // Puedes agregar otros datos del formulario si es necesario
+                // formData.append("otro_campo", valor);
+
+                // Enviar el formulario al servidor
+                fetch(this.action, {
+                    method: "POST",
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Manejar la respuesta del servidor si es necesario
+                    console.log('Respuesta del servidor:', data);
+                })
+                .catch(error => console.error('Error:', error));
+            }, "image/png");
+        });
 
     </script> 

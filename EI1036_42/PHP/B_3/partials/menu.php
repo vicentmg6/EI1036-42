@@ -40,5 +40,8 @@
 		<li>
 			<a href="?action=firma">Firma</a>
 		</li>
+		<li>
+			<a href="?action=juego4">Juego4</a>
+		</li>
 	</ul>
 </nav>
