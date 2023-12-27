@@ -10,7 +10,27 @@ async function cargaFech(src_url, lugar) {
        p = document.createElement("p");
        p.innerHTML = JSON.stringify(data);
        lugar.appendChild(p);
-       return true
+       
+
+       const tiempoAside = document.getElementById("weather-aside");
+       if (data && data.estado_actual) {
+         const tiempoTabla = document.createElement("table");
+         tiempoTabla.innerHTML = `
+           <tr>
+             <th>Parámetro</th>
+             <th>Valor</th>
+           </tr>
+           <tr>
+             <td>Temperatura</td>
+             <td>${data.estado_actual.temperatura} °C</td>
+           </tr>
+           <tr>
+             <td>Humedad</td>
+             <td>${data.estado_actual.humedad} %</td>
+           </tr>
+           <!-- Agrega más filas según los datos que quieras mostrar -->
+         `;
+       }
     }
     catch (err) {
        console.log('Fetch Error :' + err);

@@ -189,16 +189,9 @@
      }
      ?>
 </aside>
-<aside>
-    <!-- <p><a id="txt" href="https://www.el-tiempo.net/provincias/45/municipios/45132">Datos de Pepino</a> 
-    <p> -->
-    <table>
-        <th>Asd</th>
-        <td>Asd</td>
-    </table>
-    <script src="/partials/asyncFetch.js"></script>
-</aside>
 <?php
+    require_once(dirname(__FILE__)."/partials/tiempo.php");
+    require_once(dirname(__FILE__)."/partials/recurso.php");
     require_once(dirname(__FILE__)."/partials/footer.php");
 ?>
 
