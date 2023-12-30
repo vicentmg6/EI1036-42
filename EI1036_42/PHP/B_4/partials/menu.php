@@ -23,6 +23,9 @@
 			<a href="?action=registrar">Registrar</a>
 		</li>
 		<li>
+			<a href="?action=matricular">Matricular</a>
+		</li>
+		<li>
 			<a href="?action=galeria">Galería</a>
 		</li>
 		<li>
@@ -34,14 +37,21 @@
 		<li>
 			<a href="?action=subir_foto">Subir Foto</a>
 		</li>
-		<li>
+		<!-- <li>
 			<a href="?action=juego">Juego3.3</a>
-		</li>
+		</li> -->
 		<li>
 			<a href="?action=firma">Firma</a>
 		</li>
-		<li>
+		<!-- <li>
 			<a href="?action=juego4">Juego4</a>
-		</li>
+		</li> -->
+		<?php
+		if ($_SESSION["user_role"] == "user") {
+			?>
+			<li>
+				<a href="?action=form_matricula">
+			</li>
+		<?php } ?> 
 	</ul>
 </nav>
