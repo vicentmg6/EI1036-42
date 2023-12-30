@@ -130,9 +130,15 @@ if (isset($_REQUEST["action"])) {
             case "juego4":
                 $central = "/partials/juego4.html";
                 break;
-            case "matricular":
-                $central = "/partials/form_mat_cursos.html";
+            case "form_matricula":
+                $central = "/partials/form_mat_cursos.php";
                 break;
+            case "matricula":
+                $central = "/partials/matriculas.php";
+                break;
+            // case "cursosDisponibles":
+            //     $central = "/partials/cursosDisponibles.php";
+            //     break;
             default:
                 $error_msg = "Accion no permitida";
                 $central = "/partials/home.php";
@@ -328,7 +334,7 @@ require_once(dirname(__FILE__) . $central);
             if (cargaFechRecurso(enlace, lugar) == true) {
                 console.log("Correcto!!")
             } else {
-                console.log("Error al cargar los datos.");
+                console.log("Error al cargar los datos2.");
             }
         }
 

@@ -11,6 +11,7 @@
 -->
 <?php
 $error = True;
+require_once(dirname(__FILE__) . '/partials/lib_utilidades.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") { 
     $curso = $_GET["curso"];
@@ -19,12 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $file = './recursos/cursos.json'; //Carga cursos.json
     $data = carregar_dades($file);
 
-    $numerovacantes = $data[$curso]["numerovac"];
+    $numerovacantes = $data[$curso][0]["numerovac"];
 
     if ($numerovacantes > 0) {
         $error = False;
         $numerovacantes--;
-        $data[$curso]["numerovac"] = $numerovacantes;
+        $data[$curso][0]["numerovac"] = $numerovacantes;
         guarda_dades($data,$file);
 
         $file2 = './recursos/matriculados.json';
@@ -37,13 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     } 
     if ($error){ //Gestion de los errores
         $respuesta = array("matricula" => "incorrecta", "mensaje" => "Se produjo un error al procesar la matrícula.");
+        exit();
     } 
-    else {
-        $respuesta = array("matricula" => "correcta");
-    }
 
     header('Content-Type: application/json');
-    echo json_encode($respuesta);
+    $respuesta = array("matricula" => "correcta");
+    echo json_encode($respuesta, JSON_PRETTY_PRINT);
 }
 
 

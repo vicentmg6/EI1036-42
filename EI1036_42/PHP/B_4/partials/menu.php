@@ -23,9 +23,6 @@
 			<a href="?action=registrar">Registrar</a>
 		</li>
 		<li>
-			<a href="?action=matricular">Matricular</a>
-		</li>
-		<li>
 			<a href="?action=galeria">Galería</a>
 		</li>
 		<li>
@@ -47,10 +44,10 @@
 			<a href="?action=juego4">Juego4</a>
 		</li> -->
 		<?php
-		if ($_SESSION["user_role"] == "user") {
+		if ($_SESSION["user_role"] == "client") {
 			?>
 			<li>
-				<a href="?action=form_matricula">
+				<a href="?action=form_matricula">Matricular</a>
 			</li>
 		<?php } ?> 
 	</ul>
