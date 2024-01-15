@@ -290,9 +290,9 @@ require_once(dirname(__FILE__) . $central);
         }); 
     </script>
 </aside>
-<aside id="recurso">
+<!-- <aside id="recurso">
     <br>
-    <h2>Recurso JSON API CHUCK NORRIS</h2>
+    <h2>Recurso JSON API DATOS ARSENAL</h2>
     <script type="text/javascript">
         async function cargaFechRecurso(src_url, lugar) {
             try {
@@ -303,20 +303,22 @@ require_once(dirname(__FILE__) . $central);
                 }
                 let data = await response.json(); //Asignar a la variable data los datos de la API
 
-                let fecha2 = data.created_at;
-                let foto = data.icon_url;
-                let value = data.value;
+                let conjuntoDatos = data.teams[0] ;
 
-                let elemFecha = document.createElement("p");
-                elemFecha.textContent = `Fecha: ${fecha2} `;
-                var elemFoto = document.createElement("img");
-                elemFoto.src = foto;
-                let elemValue = document.createElement("p");
-                elemValue.textContent = `Value: ${value} `; //Creacion de los elementos y asignacion de los valores
+                let nombreEquipo = conjuntoDatos["strTeam"];  
+                let deporte =conjuntoDatos["strSport"]; 
+                let descripcion = conjuntoDatos["strDescriptionES"];
 
-                lugar.appendChild(elemFecha); //Asignar los hijos al padre
-                lugar.appendChild(elemFoto);
-                lugar.appendChild(elemValue);
+                let elemEquipo = document.createElement("p");
+                elemEquipo.textContent = `Nombre del equipo: ${nombreEquipo} `;
+                var elemDeporte = document.createElement("p");
+                elemDeporte.textContent = `Deporte: ${deporte} `;
+                let elemDescripcion = document.createElement("p");
+                elemDescripcion.textContent = `Descripcion: ${descripcion} `; //Creacion de los elementos y asignacion de los valores
+
+                lugar.appendChild(elemEquipo); //Asignar los hijos al padre
+                lugar.appendChild(elemDeporte);
+                lugar.appendChild(elemDescripcion);
 
 
                 return true;
@@ -330,7 +332,7 @@ require_once(dirname(__FILE__) . $central);
 
         function detectoresRecurso() {
             let lugar = document.querySelector("#recurso");
-            let enlace = "https://api.chucknorris.io/jokes/random";
+            let enlace = "https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=Arsenal";
             if (cargaFechRecurso(enlace, lugar) == true) {
                 console.log("Correcto!!")
             } else {
@@ -342,7 +344,90 @@ require_once(dirname(__FILE__) . $central);
             detectoresRecurso()
         }); 
     </script>
+</aside> -->
+<aside id="recurso">
+    <br>
+    <h2>Recurso JSON API DATOS ARSENAL</h2>
+    <script type="text/javascript">
+        async function cargaFechRecurso(src_url, lugar) {
+            try {
+                let response = await fetch(src_url)
+                if (response.status !== 200) {
+                    console.log('We have a problem. Status Code: ' + response.status);
+                    throw new Error(response.status)
+                }
+                let data = await response.json(); // Asignar a la variable data los datos de la API
+
+                let conjuntoDatos = data.teams[0];
+
+                let nombreEquipo = conjuntoDatos["strTeam"];
+                let deporte = conjuntoDatos["strSport"];
+                let liga1 = conjuntoDatos["strLeague"];
+                let liga2 = conjuntoDatos["strLeague4"] 
+                let descripcion = conjuntoDatos["strDescriptionES"];
+
+                // Crear la tabla y sus elementos
+                let tabla = document.createElement("table");
+                tabla.id = "tablaDatos";
+
+                let filaNombreEquipo = tabla.insertRow();
+                let celdaNombreEquipoEncabezado = filaNombreEquipo.insertCell(0);
+                celdaNombreEquipoEncabezado.textContent = "Nombre del equipo";
+                let celdaNombreEquipoDatos = filaNombreEquipo.insertCell(1);
+                celdaNombreEquipoDatos.textContent = nombreEquipo;
+
+                let filaDeporte = tabla.insertRow();
+                let celdaDeporteEncabezado = filaDeporte.insertCell(0);
+                celdaDeporteEncabezado.textContent = "Deporte";
+                let celdaDeporteDatos = filaDeporte.insertCell(1);
+                celdaDeporteDatos.textContent = deporte;
+
+                let filaLiga1 = tabla.insertRow();
+                let celdaLiga1Encabezado = filaLiga1.insertCell(0);
+                celdaLiga1Encabezado.textContent = "Liga Doméstica";
+                let celdaLiga1Datos = filaLiga1.insertCell(1);
+                celdaLiga1Datos.textContent = liga1;
+
+                let filaLiga2 = tabla.insertRow();
+                let celdaLiga2Encabezado = filaLiga2.insertCell(0);
+                celdaLiga2Encabezado.textContent = "Liga Europea";
+                let celdaLiga2Datos = filaLiga2.insertCell(1);
+                celdaLiga2Datos.textContent = liga2;
+
+                let filaDescripcion = tabla.insertRow();
+                let celdaDescripcionEncabezado = filaDescripcion.insertCell(0);
+                celdaDescripcionEncabezado.textContent = "Descripción";
+                let celdaDescripcionDatos = filaDescripcion.insertCell(1);
+                celdaDescripcionDatos.textContent = descripcion;
+                celdaDescripcionDatos.style.textAlign = "justify";
+
+                lugar.appendChild(tabla);
+
+                return true;
+
+            } catch (err) {
+                console.log('Fetch Error :' + err);
+                return false;
+            }
+        }
+
+        function detectoresRecurso() {
+            let lugar = document.querySelector("#recurso");
+            let enlace = "https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=Arsenal";
+            if (cargaFechRecurso(enlace, lugar) == true) {
+                console.log("Correcto!!");
+            } else {
+                console.log("Error al cargar los datos.");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            detectoresRecurso()
+        });
+    </script>
 </aside>
+
+
 <?php
 require_once(dirname(__FILE__) . "/partials/footer.php");
 ?>
