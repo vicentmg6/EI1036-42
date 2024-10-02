@@ -17,15 +17,11 @@
 			<a href="?action=home">Home</a>
 		</li>
 		<li>
-			<a href="?action=form_register">Registro</a>
+			<a href="?action=listar">Listado</a>
 		</li>
 		<li>
-			<a href="?action=tablas">Listado</a>
+			<a href="?action=registrar">Registrar</a>
 		</li>
-		<li>
-			<a href="?action=form_cursos">Cursos</a>
-		</li>
-
 		<li>
 			<a href="?action=galeria">Galería</a>
 		</li>
@@ -34,6 +30,9 @@
 		</li>
 		<li>
 			<a href="?action=qui_som">Quiénes Somos</a>
+		</li>
+		<li>
+			<a href="?action=subir_foto">Subir foto</a>
 		</li>
 	</ul>
 </nav>

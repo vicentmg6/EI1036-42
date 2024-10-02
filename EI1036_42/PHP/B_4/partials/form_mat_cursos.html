@@ -1,0 +1,116 @@
+<!--
+ * * Descripción: Formulario de matricula
+ * *
+ * * Descripción extensa: Formulario donde los usuarios se pueden matricular a un curso
+ * *
+ * * @author  Javier <al404921@uji.es> Vicent <al405660@uji.es>
+ * * @copyright 2018 Lola
+ * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
+ * * @version 3
+ * * 
+-->
+<h1>Matricula d'alumnes</h1>
+<form class="formMatricula" action="?action=" method="GET">
+    <label for="cursos">Cursos Disponibles:</label>
+    <select id="cursos" name="curso"></select>
+    <br>
+    <label for="precio">Precio:</label>
+    <input type="text" id="precio" name="precio" readonly>
+    <br>
+    <label for="vacantes">Vacantes Disponibles:</label>
+    <input type="text" id="vacantes" name="vacantes" readonly>
+    <br>
+    <button type="button" onclick="realizarMatricula()">Apuntarse</button>
+</form>
+
+<script>
+    // Cargar cursos disponibles al cargar la página
+    document.addEventListener("DOMContentLoaded", function () {
+        cargarCursosDisponibles();
+    });
+
+    // Función para cargar cursos disponibles de forma asíncrona
+    function cargarCursosDisponibles() {
+        fetch('acciones.php?action=cursosDisponibles&pet=partial')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Llenar el desplegable con los cursos disponibles
+                const cursosSelect = document.getElementById('cursos');
+                for (const curso in data) {
+                    const option = document.createElement('option');
+                    option.value = curso;
+                    option.textContent = curso;
+                    cursosSelect.appendChild(option);
+                }
+
+                // Asociar el evento change al desplegable
+                cursosSelect.addEventListener('change', function () {
+                    // Obtener el curso seleccionado
+                    const cursoSeleccionado = cursosSelect.value;
+
+                    // Obtener y mostrar precio y vacantes
+                    const precioInput = document.getElementById('precio');
+                    const vacantesInput = document.getElementById('vacantes');
+
+                    if (cursoSeleccionado in data) {
+                        const curso = data[cursoSeleccionado][0];
+                        precioInput.value = curso.precio;
+                        vacantesInput.value = curso.numerovac;
+                    } else {
+                        precioInput.value = '';
+                        vacantesInput.value = '';
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar cursos disponibles:', error);
+            });
+    }
+
+    // Función para realizar la matrícula
+    function realizarMatricula() {
+        const form = document.getElementById('formMatricula');
+        const curso = form.elements['curso'].value;
+        const precio = form.elements['precio'].value;
+        const vacantes = form.elements['vacantes'].value;
+
+        // Verificar que se haya seleccionado un curso
+        if (!curso) {
+            alert('Por favor, seleccione un curso');
+            return;
+        }
+
+        // Hacer la solicitud de matrícula
+        fetch(`acciones.php?action=matriculaCursos&pet=partial&curso=${curso}&user=XX`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Verificar el resultado de la matrícula
+                if (data.matricula === 'correcta') {
+                    // Eliminar el formulario y mostrar el mensaje de éxito
+                    form.reset();
+                    form.style.display = 'none';
+                    alert(`Usuario matriculado correctamente en el curso ${curso}`);
+                } else {
+                    // Mostrar un alert con el mensaje de error
+                    alert('Error durante la matrícula');
+                }
+            })
+            .catch(error => {
+                console.error('Error durante la matrícula:', error);
+            });
+    }
+</script>
+
+</body>
+</html>
+    

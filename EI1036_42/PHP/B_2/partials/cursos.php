@@ -10,12 +10,10 @@
  * *
 -->
 
-
-<!DOCTYPE html>
-<html>
-<body>
 <?php
-$dict =[]; 
+//var_dump($_FILES);
+//var_dump($_POST);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
     // Obtener los datos del formulario
     $codigo = $_POST["codigo"];
@@ -23,28 +21,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $numeromax= $_POST["numeromax"];
     $numerovac= $_POST["numerovac"];
     $precio= $_POST["precio"];
+    $name_foto = $_POST["name_foto"];
+    $destino = "../media/fotos/".$_FILES["foto_cliente"]["name"];
 
     if ($numerovac <= $numeromax){
         $datos= array(
             "descripcion" => $descripcion,
             "numeromax" => $numeromax,
             "numerovac" => $numerovac,
-            "precio" => $precio
+            "precio" => $precio,
+            "nom_imagen" => $name_foto,
+            "foto_cliente" => $destino
         );
 
+        move_uploaded_file($_FILES["foto_cliente"]['tmp_name'],$destino);
+        $file = './recursos/cursos.json';
+        $data = carregar_dades($file);
 
-        $file = 'file.json';
-        $contenido = file_get_contents($file);
-
-        $data = json_decode($contenido, true);
 
         if (!(array_key_exists($codigo,$data))){
             $data[$codigo][] = $datos; 
 
-            $jsonData = json_encode($data, JSON_PRETTY_PRINT);
-
-            file_put_contents($file, $jsonData);
+            guarda_dades($data,$file);
             echo "Los datos se han introducido correctamente.";
+            require_once(dirname(__FILE__)."/listar.php");
+
         }
         else{
             echo "ERROR: Ya existe un curso con ese mismo código.";
@@ -54,7 +55,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         echo "ERROR: Las plazas vacantes no pueden ser mayores que el número de alumnos máximos.";
     }
     ?>
-    <br>
-    <a href="/portal0.php?action=form_cursos" class="button">Volver</a>
-</body>
-</html>
+ 

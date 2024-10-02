@@ -1,0 +1,124 @@
+<!--
+ * * Descripción: Fichero HTML/JS para subir una firma.
+ * *
+ * * Descripción extensa: Se crea el formulario con los campos necesarios y sus requisitos para realizar la firma.
+ * *
+ * * @author  Javier <al404921@uji.es>  Vicent <al405660@uji.es>
+ * * @copyright 2023 Javier y Vicent
+ * * @license http://www.fsf.org/licensing/licenses/gpl.txt GPL 2 or later
+ * * @version 2
+ * *
+-->
+
+    <h1>Firma Online</h1>
+
+    <form action="?action=firmado" method="POST" class="formulario" enctype="multipart/form-data" id="form"></form>
+        <label for="foto_cliente" id="foto_cliente" name="foto_cliente">Selección Foto</label>
+        <br/>
+        <input type="file" accept="image/*" name="foto_cliente" id="upload">
+        <br/>
+
+        <input type="submit" value="Añadir" class="botonform">
+
+    </form>
+
+    <H1>HTML5-Canvas</H1>
+    <canvas id="sketchpad" width="600px" height="500px" style="background-color: coral;"></canvas>
+    <p>
+        <span id="copiar"> COPIAR </span>
+        <span id="limpiar"> LIMPIAR </span>
+        <span id="guardar"> GUARDAR </span>
+    </p>
+
+    <script>
+        function mostrarFoto(nodo, imagen) {
+            var reader = new FileReader();
+            reader.addEventListener("load", function () {
+            imagen.src = reader.result;
+            });
+            reader.readAsDataURL(nodo.files[0]);
+        }
+    
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top,
+            };
+        }
+    
+        function limpiar(context, canvas) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        
+        function activarCanvas(imagen){
+            var canvas = document.querySelector("#sketchpad");
+            var context = canvas.getContext("2d");
+            canvas.addEventListener("click", function (evt) {
+            coors = getMousePos(canvas, evt);
+            });
+        
+            var drawer = {
+                isDrawing: false,
+                mousedown: function (coors) {
+                    context.beginPath();
+                    context.moveTo(coors.x, coors.y);
+                    this.isDrawing = true;
+                },
+                mousemove: function (coors) {
+                    if (this.isDrawing) {
+                        context.lineTo(coors.x, coors.y);
+                        context.stroke();
+                    }
+                },
+                mouseup: function (coors) {
+                    if (this.isDrawing) {
+                        this.mousemove(coors);
+                        this.isDrawing = false;
+                    }
+                }
+            }
+            canvas.addEventListener('mousedown', function (evt) {
+                drawer[evt.type](getMousePos(canvas, evt));
+            }, false);
+            canvas.addEventListener('mousemove', function (evt) {
+                drawer[evt.type](getMousePos(canvas, evt));
+            }, false);
+            canvas.addEventListener('mouseup', function (evt) {
+                drawer[evt.type](getMousePos(canvas, evt));
+            }, false);
+
+            document.querySelector("#copiar").addEventListener("click", function () {
+            context.drawImage(imagen, 0, 0, 600, 500);
+            });
+            document.querySelector("#limpiar").addEventListener("click", function () {
+            limpiar(context, canvas);
+            });
+            document.querySelector("#guardar").addEventListener("click", function () {
+            imagen.src = canvas.toDataURL("image/png");
+            });
+        }
+        function ready() {
+            var imagen = null;
+            var fichero = document.querySelector("#upload");
+            var child = document.createElement("img");
+            child.setAttribute("width", "600px");
+            child.setAttribute("hight", "500px");
+            child.setAttribute("background-color", "lightblue");
+            child.setAttribute("id", "imagen");
+            imagen = fichero.parentNode.appendChild(child);
+            fichero.addEventListener("change", function (event) {
+            if (fichero.files[0]["type"] == "image/jpg" || fichero.files[0]["type"] == "image/jpeg")
+                if (fichero.files[0].size  <= 400 * 1024)
+                    {mostrarFoto(this, imagen);
+                    }
+                  else alert("La imagen tiene que ser de menos de 400KB");
+             else alert("Seleccione una imagen JPG o JPEG") ;
+            });
+            activarCanvas(imagen);
+
+        }
+
+        ready();
+
+    </script> 
